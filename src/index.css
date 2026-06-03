@@ -1,0 +1,313 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-bg: #0A0A0A;
+    --brand-green-dark: #0F5132;
+    --brand-green: #22C55E;
+    --brand-green-light: #4ADE80;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0A0A0A;
+    color: #FFFFFF;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0A0A0A;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #0F5132;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #22C55E;
+  }
+
+  ::selection {
+    background: rgba(34, 197, 94, 0.3);
+    color: #FFFFFF;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 16px;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+
+  .glass-card-hover:hover {
+    border-color: rgba(34, 197, 94, 0.3);
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #0F5132, #22C55E);
+    color: #FFFFFF;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    padding: 0.75rem 1.75rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #22C55E, #0F5132);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .btn-primary:hover::before {
+    opacity: 1;
+  }
+
+  .btn-primary span {
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #22C55E;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    padding: 0.75rem 1.75rem;
+    border-radius: 8px;
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-outline:hover {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: #22C55E;
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    color: #FFFFFF;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: #D1D5DB;
+    line-height: 1.7;
+    max-width: 600px;
+  }
+
+  .green-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    background: rgba(15, 81, 50, 0.3);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #22C55E;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    padding: 0.375rem 0.875rem;
+    border-radius: 100px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .divider-green {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #0F5132, #22C55E);
+    border-radius: 2px;
+    margin: 1rem 0;
+  }
+
+  .number-display {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    background: linear-gradient(135deg, #22C55E, #4ADE80);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .chart-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, #0A0A0A 100%);
+    pointer-events: none;
+  }
+
+  .partner-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: rgba(15, 81, 50, 0.25);
+    border: 1px solid rgba(34, 197, 94, 0.25);
+    color: #22C55E;
+    font-size: 0.65rem;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    padding: 0.25rem 0.625rem;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Premium Animations */
+  @keyframes fadeInScale {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slideInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes gradientShift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes softGlow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(34, 197, 94, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(34, 197, 94, 0.2);
+    }
+  }
+
+  .btn-primary {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(34, 197, 94, 0.25);
+  }
+
+  .btn-outline {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-outline:hover {
+    transform: translateY(-2px);
+  }
+
+  .glass-card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card-hover:hover {
+    transform: translateY(-4px);
+    border-color: rgba(34, 197, 94, 0.5);
+    box-shadow: 0 20px 40px rgba(34, 197, 94, 0.2);
+  }
+
+  /* Page transition */
+  @keyframes pageEnter {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  body > div {
+    animation: pageEnter 0.6s ease-out;
+  }
+}
